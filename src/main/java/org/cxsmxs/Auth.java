@@ -25,8 +25,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
-public final class Auth extends JavaPlugin {
-
+public final class Auth extends Async {
     //Database
     public static HikariDataSource hikari = null;
     public static HashMap<UUID, Boolean> isLoggedIn = new HashMap<>();
@@ -39,15 +38,18 @@ public final class Auth extends JavaPlugin {
     private final YamlConfiguration conf = new YamlConfiguration();
     private final YamlConfiguration mess = new YamlConfiguration();
     private final YamlConfiguration pass = new YamlConfiguration();
+    private final YamlConfiguration tg = new YamlConfiguration();
     private File c = null;
     private File m = null;
     private File p = null;
+    private File t = null;
 
     public static Auth getInstance() {
         return instance;
     }
 
-    public void onDisable() {
+    @Override
+    public void onDisableAsync() {
         info("&4Disabling");
         if (conn != null) {
             try {
@@ -57,28 +59,27 @@ public final class Auth extends JavaPlugin {
         }
     }
 
-    public void onEnable() {
+    @Override
+    public void onEnableAsync() {
         instance = this;
 
         this.c = new File(getDataFolder(), "config.yml");
         this.m = new File(getDataFolder(), "messages.yml");
         this.p = new File(getDataFolder(), "passwords.yml");
+        this.t = new File(getDataFolder(), "telegram.yml");
 
         mkdirAndLoad(c, conf);
         mkdirAndLoad(m, mess);
         mkdirAndLoad(p, pass);
-
-        //bStats
-        //Metrics metrics = new Metrics(this, 18975);
-        //metrics.addCustomChart(new Metrics.SimplePie("mysql", () -> getConf().getString("mysql", "false")));
+        mkdirAndLoad(t, tg);
 
         //Updater
-        new UpdateChecker(this, 71835).getVersion(updater_version -> {
-            if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) {
-                new_version = updater_version;
-            }
-            info("&aEnabling");
-        });
+        //new UpdateChecker(this, 71835).getVersion(updater_version -> {
+        //    if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) {
+        //        new_version = updater_version;
+        //    }
+        //    info("&aEnabling");
+        //});
 
         if (conf.getBoolean("hide_password", true)) {
             setupPasswordFilter();
