@@ -8,18 +8,18 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class PlayerInteractListener implements Listener {
 
-    private final Auth auth;
+  private final Auth auth;
 
-    public PlayerInteractListener(Auth plugin) {
-        auth = plugin;
+  public PlayerInteractListener(Auth plugin) {
+    auth = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    Bukkit.getPluginManager().registerEvents(this, plugin);
+  }
+
+  @EventHandler
+  public void onPlayerInteraction(PlayerInteractEvent e) {
+    if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
+      e.setCancelled(true);
     }
-
-    @EventHandler
-    public void onPlayerInteraction(PlayerInteractEvent e) {
-        if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
-            e.setCancelled(true);
-        }
-    }
+  }
 }
