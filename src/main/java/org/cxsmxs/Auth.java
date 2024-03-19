@@ -15,7 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
+//import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,14 +72,6 @@ public final class Auth extends Async {
         mkdirAndLoad(m, mess);
         mkdirAndLoad(p, pass);
         mkdirAndLoad(t, tg);
-
-        //Updater
-        //new UpdateChecker(this, 71835).getVersion(updater_version -> {
-        //    if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) {
-        //        new_version = updater_version;
-        //    }
-        //    info("&aEnabling");
-        //});
 
         if (conf.getBoolean("hide_password", true)) {
             setupPasswordFilter();
