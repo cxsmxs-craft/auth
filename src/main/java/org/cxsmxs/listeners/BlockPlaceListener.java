@@ -8,19 +8,19 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockPlaceListener implements Listener {
 
-    private final Auth auth;
+  private final Auth auth;
 
-    public BlockPlaceListener(Auth plugin) {
-        auth = plugin;
+  public BlockPlaceListener(Auth plugin) {
+    auth = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    Bukkit.getPluginManager().registerEvents(this, plugin);
+  }
+
+  @EventHandler
+  public void onBlockPlace(BlockPlaceEvent e) {
+    if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
+      e.setCancelled(true);
     }
-
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e) {
-        if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
-            e.setCancelled(true);
-        }
-    }
+  }
 
 }

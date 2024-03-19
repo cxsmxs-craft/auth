@@ -38,17 +38,17 @@ public class Core {
     this.config = config;
 
     this.client = new OkHttpClient.Builder()
-        .readTimeout(Duration.ZERO)
-        .addInterceptor(new HttpLoggingInterceptor()
-            .setLevel(config.getBoolean("isDebugHttp") ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE))
-        .build();
+      .readTimeout(Duration.ZERO)
+      .addInterceptor(new HttpLoggingInterceptor()
+        .setLevel(config.getBoolean("isDebugHttp") ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE))
+      .build();
 
     this.api = (Api) new Retrofit.Builder()
-        .baseUrl(config.getString("getApiOrigin") + "/bot" + config.getString("getBotToken") + "/")
-        .client(client)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(Core.class);
+      .baseUrl(config.getString("getApiOrigin") + "/bot" + config.getString("getBotToken") + "/")
+      .client(client)
+      .addConverterFactory(GsonConverterFactory.create())
+      .build()
+      .create(Core.class);
 
     this.executorService = Executors.newCachedThreadPool();
 
