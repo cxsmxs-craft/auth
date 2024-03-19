@@ -1,0 +1,39 @@
+name: Auth
+version: ${project.version}
+main: org.cxsmxs.Auth
+api-version: 1.13
+authors: [ RabbitCompany,sandtechnology, CXSMXS.orzklv ]
+description: The best authentication plugin
+commands:
+  login:
+    usage: /<command>
+    aliases: [ log, l ]
+    description: Login to your minecraft account
+  logout:
+    usage: /<command>
+    description: Logout from your minecraft account
+  register:
+    usage: /<command>
+    aliases: [ reg, r ]
+    description: Register to your minecraft account
+  changepassword:
+    usage: /<command>
+    aliases: [ changepass, cp ]
+    description: Change password for your minecraft account
+  forcechangepassword:
+    usage: /<command>
+    aliases: [ forcechangepass,fcp, fp ]
+    permission: auth.forcechangepassword
+    description: Forced change password for an player minecraft account
+  forceregister:
+    usage: /<command>
+    aliases: [ forceregister,fr ]
+    permission: auth.forceregister
+    description: Forced register for an player minecraft account
+permissions:
+  auth.forcechangepassword:
+    default: op
+    description: Allow to use forcechangepassword command
+  auth.forceregister:
+    default: op
+    description: Allow to use forceregister command

@@ -1,0 +1,53 @@
+#       ---------------- + Auth by CXSMXS + --------------   #
+#                                                            #
+#                             Config                          #
+#                                                            #
+#       --------- + ------------------------- + ---------    #
+#
+# Here you can change which encoder will your server use. You can use: MD2, MD5, SHA-1, SHA-256, SHA-384, SHA-512 or null - for no encoder
+encoder: "SHA-256"
+# Do you want to teleport players back to their last location after successful login?
+teleport_player_last_location: true
+# Where should players who haven't logged in be sent? You can choose to always send them to the same world they were in the last time by using (null) as the option.
+spawn_world: null
+# How many incorrect password attempts can the player make before the server kicks them out?
+attempts: 5
+# What is the login timeout in seconds before players get kicked?
+time_before_kick: 30
+# Minimum characters for password
+min_password_length: 4
+# Maximum characters for password
+max_password_length: 32
+# Don't allow players with illegal usernames to join your server
+kick_illegal_usernames: true
+# Do you want players to be identified with usernames (0) or UUIDs (1) (Default is usernames (0))
+player_identifier: 0
+# Hiding the command log of the plugin command in console?
+# It will protect password
+hide_password: true
+# If you enable session, players won't need to log in every time they enter the server (Awesome feature for Bungeecord servers)
+session_enabled: true
+# How many minutes do you want session to last?
+session_time: 30
+# Do you want to enable titles and subtitles?
+titles_enabled: true
+# This title will show when player is required to login
+login_title: "&aLogin"
+# This subtitle will show when player is required to login
+login_subtitle: "&a/login <password>"
+# This title will show when player is required to register
+register_title: "&aRegister"
+# This subtitle will show when player is required to register
+register_subtitle: "&a/register <password> <password>"
+#----------------------------------------------------------
+#   MySQL Database - Recommended for Bungeecord networks
+#----------------------------------------------------------
+# Do you want to use mysql database?
+mysql: false
+# Here are all data for connection to Mysql database. Please create database, user and password by yourself. Do not use root as user, because of security risk!
+mysql_host: "localhost"
+mysql_port: "3306"
+mysql_database: "Auth"
+mysql_user: "root"
+mysql_password: ""
+mysql_useSSL: false
