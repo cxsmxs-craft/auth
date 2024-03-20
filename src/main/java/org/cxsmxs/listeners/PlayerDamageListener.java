@@ -9,20 +9,20 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 public class PlayerDamageListener implements Listener {
 
-  private final Auth auth;
+    private final Auth auth;
 
-  public PlayerDamageListener(Auth plugin) {
-    auth = plugin;
+    public PlayerDamageListener(Auth plugin) {
+        auth = plugin;
 
-    Bukkit.getPluginManager().registerEvents(this, plugin);
-  }
-
-  @EventHandler
-  public void onPlayerDamage(EntityDamageEvent e) {
-    if (e.getEntity() instanceof Player) {
-      if (!Auth.isLoggedIn.getOrDefault(e.getEntity().getUniqueId(), false)) {
-        e.setCancelled(true);
-      }
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
-  }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent e) {
+        if (e.getEntity() instanceof Player) {
+            if (!Auth.isLoggedIn.getOrDefault(e.getEntity().getUniqueId(), false)) {
+                e.setCancelled(true);
+            }
+        }
+    }
 }

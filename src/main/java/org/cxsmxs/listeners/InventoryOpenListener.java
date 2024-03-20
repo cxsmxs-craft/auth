@@ -8,19 +8,19 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 
 public class InventoryOpenListener implements Listener {
 
-  private final Auth auth;
+    private final Auth auth;
 
-  public InventoryOpenListener(Auth plugin) {
-    auth = plugin;
+    public InventoryOpenListener(Auth plugin) {
+        auth = plugin;
 
-    Bukkit.getPluginManager().registerEvents(this, plugin);
-  }
-
-  @EventHandler
-  public void onInventoryOpen(InventoryOpenEvent e) {
-    if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
-      e.setCancelled(true);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
-  }
+
+    @EventHandler
+    public void onInventoryOpen(InventoryOpenEvent e) {
+        if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
+            e.setCancelled(true);
+        }
+    }
 
 }

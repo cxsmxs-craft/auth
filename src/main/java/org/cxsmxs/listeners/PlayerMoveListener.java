@@ -8,21 +8,21 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayerMoveListener implements Listener {
 
-  private final Auth auth;
+    private final Auth auth;
 
-  public PlayerMoveListener(Auth plugin) {
-    auth = plugin;
+    public PlayerMoveListener(Auth plugin) {
+        auth = plugin;
 
-    Bukkit.getPluginManager().registerEvents(this, plugin);
-  }
-
-  @EventHandler
-  public void onPlayerMove(PlayerMoveEvent e) {
-    if (e.getTo() != null && !Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
-      if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
-        e.setCancelled(true);
-      }
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
-  }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent e) {
+        if (e.getTo() != null && !Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
+            if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
+                e.setCancelled(true);
+            }
+        }
+    }
 
 }

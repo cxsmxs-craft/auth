@@ -8,19 +8,19 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class BlockBreakListener implements Listener {
 
-  private final Auth auth;
+    private final Auth auth;
 
-  public BlockBreakListener(Auth plugin) {
-    auth = plugin;
+    public BlockBreakListener(Auth plugin) {
+        auth = plugin;
 
-    Bukkit.getPluginManager().registerEvents(this, plugin);
-  }
-
-  @EventHandler
-  public void onBlockBreak(BlockBreakEvent e) {
-    if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
-      e.setCancelled(true);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
-  }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent e) {
+        if (!Auth.isLoggedIn.getOrDefault(e.getPlayer().getUniqueId(), false)) {
+            e.setCancelled(true);
+        }
+    }
 
 }

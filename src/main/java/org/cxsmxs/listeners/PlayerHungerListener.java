@@ -9,21 +9,21 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class PlayerHungerListener implements Listener {
 
-  private final Auth auth;
+    private final Auth auth;
 
-  public PlayerHungerListener(Auth plugin) {
-    auth = plugin;
+    public PlayerHungerListener(Auth plugin) {
+        auth = plugin;
 
-    Bukkit.getPluginManager().registerEvents(this, plugin);
-  }
-
-  @EventHandler
-  public void onPlayerHunger(FoodLevelChangeEvent e) {
-    if (e.getEntity() instanceof Player) {
-      if (!Auth.isLoggedIn.getOrDefault(e.getEntity().getUniqueId(), false)) {
-        e.setCancelled(true);
-      }
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
-  }
+
+    @EventHandler
+    public void onPlayerHunger(FoodLevelChangeEvent e){
+        if(e.getEntity() instanceof Player){
+            if (!Auth.isLoggedIn.getOrDefault(e.getEntity().getUniqueId(), false)) {
+                e.setCancelled(true);
+            }
+        }
+    }
 
 }
