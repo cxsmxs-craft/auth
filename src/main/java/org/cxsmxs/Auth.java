@@ -15,7 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
-//import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
-public final class Auth extends Async {
+public final class Auth extends JavaPlugin {
+
   //Database
   public static HikariDataSource hikari = null;
   public static HashMap<UUID, Boolean> isLoggedIn = new HashMap<>();
@@ -38,18 +39,15 @@ public final class Auth extends Async {
   private final YamlConfiguration conf = new YamlConfiguration();
   private final YamlConfiguration mess = new YamlConfiguration();
   private final YamlConfiguration pass = new YamlConfiguration();
-  private final YamlConfiguration tg = new YamlConfiguration();
   private File c = null;
   private File m = null;
   private File p = null;
-  private File t = null;
 
   public static Auth getInstance() {
     return instance;
   }
 
-  @Override
-  public void onDisableAsync() {
+  public void onDisable() {
     info("&4Disabling");
     if (conn != null) {
       try {
@@ -59,19 +57,16 @@ public final class Auth extends Async {
     }
   }
 
-  @Override
-  public void onEnableAsync() {
+  public void onEnable() {
     instance = this;
 
     this.c = new File(getDataFolder(), "config.yml");
     this.m = new File(getDataFolder(), "messages.yml");
     this.p = new File(getDataFolder(), "passwords.yml");
-    this.t = new File(getDataFolder(), "telegram.yml");
 
     mkdirAndLoad(c, conf);
     mkdirAndLoad(m, mess);
     mkdirAndLoad(p, pass);
-    mkdirAndLoad(t, tg);
 
     if (conf.getBoolean("hide_password", true)) {
       setupPasswordFilter();
