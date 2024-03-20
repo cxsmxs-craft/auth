@@ -8,18 +8,18 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class InventoryClickListener implements Listener {
 
-    private final Auth auth;
+  private final Auth auth;
 
-    public InventoryClickListener(Auth plugin) {
-        auth = plugin;
+  public InventoryClickListener(Auth plugin) {
+    auth = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    Bukkit.getPluginManager().registerEvents(this, plugin);
+  }
+
+  @EventHandler
+  public void onInventoryClick(InventoryClickEvent e) {
+    if (!Auth.isLoggedIn.getOrDefault(e.getWhoClicked().getUniqueId(), false)) {
+      e.setCancelled(true);
     }
-
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if (!Auth.isLoggedIn.getOrDefault(e.getWhoClicked().getUniqueId(), false)) {
-            e.setCancelled(true);
-        }
-    }
+  }
 }
