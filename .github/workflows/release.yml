@@ -1,36 +1,4 @@
-name: Build & deploy release
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.2
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'temurin'
-          java-version: 21
-          cache: 'gradle'
-      - name: Set version to release
-        run: ./gradlew --no-daemon unSnapshotVersion
-      - name: Commit release version
-        run: ./gradlew --no-daemon commitVersion
-      - name: Build & deploy to Nexus
-        env:
-          REPO_PASSWORD: ${{ secrets.NEXUS_CI }}
-        run: ./gradlew --no-daemon publish
-      - name: Push to master
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-name: Build & deploy release
+name: Build & Deploy CI
 
 on:
   push:
@@ -44,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.2
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v3.11.0
         with:
           distribution: 'oracle'
