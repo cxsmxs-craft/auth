@@ -291,23 +291,9 @@ public final class Auth extends JavaPlugin {
     text += "&8| &cInformation:\n";
     text += "&8|\n";
     text += "&8|   &9Name: &bAuth\n";
-    text += "&8|   &9Developer: &bBlack1_TV\n";
-    if (new_version != null) {
-      text += "&8|   &9Version: &b" + getDescription().getVersion() + " (&6update available&b)\n";
-    } else {
-      text += "&8|   &9Version: &b" + getDescription().getVersion() + "\n";
-    }
-    text += "&8|   &9Website: &bhttps://rabbit-company.com\n";
-    text += "&8|\n";
-    text += "&8| &cSponsors:\n";
-    text += "&8|\n";
-    text += "&8|   &9- &6https://rabbitserverlist.com\n";
-    text += "&8|\n";
-    text += "&8| &cSupport:\n";
-    text += "&8|\n";
-    text += "&8|   &9Discord: &bziga.zajc007\n";
-    text += "&8|   &9Mail: &bziga.zajc007@gmail.com\n";
-    text += "&8|   &9Discord: &bhttps://discord.gg/hUNymXX\n";
+    text += "&8|   &9Developer: &bCXSMXS\n";
+    text += "&8|   &9Version: &b" + getDescription().getVersion() + "\n";
+    text += "&8|   &9Website: &bhttps://cxsmxs.space\n";
     text += "&8|\n";
     text += "&8[]=========================================[]\n";
 
