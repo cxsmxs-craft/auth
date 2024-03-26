@@ -12,6 +12,14 @@
     <name>Auth</name>
     <description>Login solution by CXSMXS Team</description>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <spigot.api.version>1.13</spigot.api.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <build>
         <defaultGoal>clean package</defaultGoal>
         <plugins>
@@ -48,13 +56,6 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <repositories>
         <repository>

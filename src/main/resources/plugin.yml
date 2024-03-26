@@ -1,7 +1,7 @@
 name: Auth
 version: ${project.version}
 main: org.cxsmxs.Auth
-api-version: 1.13
+api-version: ${project.properties.spigot-api-version}
 authors: [ RabbitCompany,sandtechnology, CXSMXS.orzklv ]
 description: The best authentication plugin
 commands:
